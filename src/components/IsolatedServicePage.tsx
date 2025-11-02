@@ -1,11 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Phone, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 const IsolatedServicePage = () => {
   const whatsappLink = "https://wa.me/6281218000343?text=Halo%20admin%20PusatNet,%20koneksi%20saya%20terisolir.%20Mohon%20bantuan%20aktivasi.%20ID%20Pelanggan:%20_____";
-  const phoneLink = "tel:+6281218000343";
 
   return (
     <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gradient-to-b from-background to-accent/10">
@@ -36,17 +35,13 @@ const IsolatedServicePage = () => {
         {/* Contact Info */}
         <div className="bg-accent/20 rounded-lg p-3 sm:p-4 mb-6 sm:mb-7 md:mb-8 text-center border border-accent/30">
           <p className="text-xs sm:text-sm text-muted-foreground mb-1">Hubungi Admin</p>
-          <a 
-            href={phoneLink}
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-primary hover:text-primary/80 transition-colors inline-block"
-            aria-label="Telepon admin PusatNet"
-          >
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
             081218000343
-          </a>
+          </p>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="space-y-2.5 sm:space-y-3 mb-8 sm:mb-9 md:mb-10">
+        {/* CTA Button */}
+        <div className="mb-8 sm:mb-9 md:mb-10">
           <Button 
             asChild
             size="lg"
@@ -56,19 +51,6 @@ const IsolatedServicePage = () => {
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-4 sm:h-5 w-4 sm:w-5" />
               Chat Admin via WhatsApp
-            </a>
-          </Button>
-          
-          <Button 
-            asChild
-            variant="outline"
-            size="lg"
-            className="w-full h-11 sm:h-12 text-sm sm:text-base font-medium border-2 border-secondary hover:bg-secondary/20 hover:border-secondary transition-all duration-250 active:scale-[0.98]"
-            aria-label="Telepon admin PusatNet"
-          >
-            <a href={phoneLink}>
-              <Phone className="mr-2 h-4 w-4" />
-              Telepon Admin
             </a>
           </Button>
         </div>
