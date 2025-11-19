@@ -1,14 +1,28 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Copy, Check } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import bankMandiri from "@/assets/bank-mandiri.png";
 import bankBRI from "@/assets/bank-bri.png";
 import bankBNI from "@/assets/bank-bni.png";
 import bankBCA from "@/assets/bank-bca.png";
 
 const IsolatedServicePage = () => {
+  const { toast } = useToast();
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const whatsappLink = "https://wa.me/6281218000343?text=Halo%20admin%20PusatNet,%20koneksi%20saya%20terisolir.%20Mohon%20bantuan%20aktivasi.%20ID%20Pelanggan:%20_____";
+
+  const copyToClipboard = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    toast({
+      description: "Nomor rekening berhasil disalin",
+      duration: 2000,
+    });
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gradient-to-b from-background to-accent/10">
@@ -82,39 +96,87 @@ const IsolatedServicePage = () => {
                 <p className="mb-3 text-foreground/90">Silakan transfer ke salah satu rekening berikut:</p>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
-                    <img src={bankMandiri} alt="Bank Mandiri" className="w-10 h-10 object-contain" />
-                    <div className="flex-1">
+                    <img src={bankMandiri} alt="Bank Mandiri" className="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
                       <p className="font-semibold text-foreground">Bank Mandiri</p>
                       <p className="text-sm">Mukti Kismanto</p>
                       <p className="text-sm font-mono font-medium text-primary">1350010074456</p>
                     </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard("1350010074456", "mandiri")}
+                      className="flex-shrink-0 h-8 text-xs"
+                    >
+                      {copiedId === "mandiri" ? (
+                        <><Check className="w-3 h-3 mr-1" /> Tersalin</>
+                      ) : (
+                        <><Copy className="w-3 h-3 mr-1" /> Salin Rek</>
+                      )}
+                    </Button>
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
-                    <img src={bankBRI} alt="Bank BRI" className="w-10 h-10 object-contain" />
-                    <div className="flex-1">
+                    <img src={bankBRI} alt="Bank BRI" className="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
                       <p className="font-semibold text-foreground">BRI</p>
                       <p className="text-sm">Mukti Kismanto</p>
                       <p className="text-sm font-mono font-medium text-primary">594001025547537</p>
                     </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard("594001025547537", "bri")}
+                      className="flex-shrink-0 h-8 text-xs"
+                    >
+                      {copiedId === "bri" ? (
+                        <><Check className="w-3 h-3 mr-1" /> Tersalin</>
+                      ) : (
+                        <><Copy className="w-3 h-3 mr-1" /> Salin Rek</>
+                      )}
+                    </Button>
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
-                    <img src={bankBNI} alt="Bank BNI" className="w-10 h-10 object-contain" />
-                    <div className="flex-1">
+                    <img src={bankBNI} alt="Bank BNI" className="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
                       <p className="font-semibold text-foreground">BNI</p>
                       <p className="text-sm">Mukti Kismanto</p>
                       <p className="text-sm font-mono font-medium text-primary">1687262582</p>
                     </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard("1687262582", "bni")}
+                      className="flex-shrink-0 h-8 text-xs"
+                    >
+                      {copiedId === "bni" ? (
+                        <><Check className="w-3 h-3 mr-1" /> Tersalin</>
+                      ) : (
+                        <><Copy className="w-3 h-3 mr-1" /> Salin Rek</>
+                      )}
+                    </Button>
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
-                    <img src={bankBCA} alt="Bank BCA" className="w-10 h-10 object-contain" />
-                    <div className="flex-1">
+                    <img src={bankBCA} alt="Bank BCA" className="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
                       <p className="font-semibold text-foreground">BCA</p>
                       <p className="text-sm">Mukti Kismanto</p>
                       <p className="text-sm font-mono font-medium text-primary">0980758630</p>
                     </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard("0980758630", "bca")}
+                      className="flex-shrink-0 h-8 text-xs"
+                    >
+                      {copiedId === "bca" ? (
+                        <><Check className="w-3 h-3 mr-1" /> Tersalin</>
+                      ) : (
+                        <><Copy className="w-3 h-3 mr-1" /> Salin Rek</>
+                      )}
+                    </Button>
                   </div>
                 </div>
               </AccordionContent>
