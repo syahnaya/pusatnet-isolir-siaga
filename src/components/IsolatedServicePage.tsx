@@ -2,6 +2,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MessageCircle } from "lucide-react";
+import bankMandiri from "@/assets/bank-mandiri.png";
+import bankBRI from "@/assets/bank-bri.png";
+import bankBNI from "@/assets/bank-bni.png";
+import bankBCA from "@/assets/bank-bca.png";
 
 const IsolatedServicePage = () => {
   const whatsappLink = "https://wa.me/6281218000343?text=Halo%20admin%20PusatNet,%20koneksi%20saya%20terisolir.%20Mohon%20bantuan%20aktivasi.%20ID%20Pelanggan:%20_____";
@@ -72,10 +76,47 @@ const IsolatedServicePage = () => {
             
             <AccordionItem value="item-2" className="border-b border-border/50">
               <AccordionTrigger className="text-left text-sm sm:text-base font-semibold hover:text-primary transition-colors py-3 sm:py-4">
-                Bagaimana cara membayar?
+                Bagaimana cara membayar dengan Transfer?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-sm sm:text-base pb-3 sm:pb-4">
-                Ikuti instruksi admin (transfer/QRIS), lalu kirim bukti pembayaran.
+                <p className="mb-3 text-foreground/90">Silakan transfer ke salah satu rekening berikut:</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                    <img src={bankMandiri} alt="Bank Mandiri" className="w-10 h-10 object-contain" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-foreground">Bank Mandiri</p>
+                      <p className="text-sm">Mukti Kismanto</p>
+                      <p className="text-sm font-mono font-medium text-primary">1350010074456</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                    <img src={bankBRI} alt="Bank BRI" className="w-10 h-10 object-contain" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-foreground">BRI</p>
+                      <p className="text-sm">Mukti Kismanto</p>
+                      <p className="text-sm font-mono font-medium text-primary">594001025547537</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                    <img src={bankBNI} alt="Bank BNI" className="w-10 h-10 object-contain" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-foreground">BNI</p>
+                      <p className="text-sm">Mukti Kismanto</p>
+                      <p className="text-sm font-mono font-medium text-primary">1687262582</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                    <img src={bankBCA} alt="Bank BCA" className="w-10 h-10 object-contain" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-foreground">BCA</p>
+                      <p className="text-sm">Mukti Kismanto</p>
+                      <p className="text-sm font-mono font-medium text-primary">0980758630</p>
+                    </div>
+                  </div>
+                </div>
               </AccordionContent>
             </AccordionItem>
             
