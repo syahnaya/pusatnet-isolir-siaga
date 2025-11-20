@@ -201,17 +201,8 @@ const IsolatedServicePage = () => {
                 Bagaimana cara membayar dengan QRIS?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-sm sm:text-base pb-3 sm:pb-4">
-                <div className="space-y-4">
-                  <p className="font-medium text-foreground">
-                    Selesaikan pembayaran Anda dengan 4 langkah mudah:
-                  </p>
-                  <ol className="list-decimal list-inside space-y-2">
-                    <li>Simpan gambar QRIS di HP Anda</li>
-                    <li>Buka aplikasi dompet digital Anda</li>
-                    <li>Pilih fitur Scan QR atau Upload QR</li>
-                    <li>Upload gambar QRIS ini, lalu ikuti instruksi untuk menyelesaikan pembayaran</li>
-                  </ol>
-                  <div className="flex flex-col items-center gap-4 mt-4">
+                <div className="space-y-6">
+                  <div className="flex flex-col items-center gap-4">
                     <img 
                       src={qrisPusatnet} 
                       alt="QRIS Pusatnet Payment" 
@@ -225,6 +216,30 @@ const IsolatedServicePage = () => {
                       <Download className="mr-2 h-4 w-4" />
                       Download QRIS
                     </Button>
+                  </div>
+                  
+                  <div className="bg-muted/50 rounded-lg p-4 sm:p-6">
+                    <p className="font-semibold text-foreground mb-4 text-base">
+                      Selesaikan pembayaran Anda dengan 4 langkah mudah:
+                    </p>
+                    <ol className="space-y-3">
+                      <li className="flex gap-3">
+                        <span className="font-bold text-primary min-w-6">1.</span>
+                        <span>Simpan gambar QRIS di HP Anda</span>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="font-bold text-primary min-w-6">2.</span>
+                        <span>Buka aplikasi dompet digital Anda</span>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="font-bold text-primary min-w-6">3.</span>
+                        <span>Pilih fitur Scan QR atau Upload QR</span>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="font-bold text-primary min-w-6">4.</span>
+                        <span>Upload gambar QRIS ini, lalu ikuti instruksi untuk menyelesaikan pembayaran</span>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </AccordionContent>
