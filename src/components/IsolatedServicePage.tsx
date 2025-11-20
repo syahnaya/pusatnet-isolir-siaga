@@ -16,13 +16,73 @@ const IsolatedServicePage = () => {
   const whatsappLink = "https://wa.me/6281218000343?text=Halo%20admin%20PusatNet,%20koneksi%20saya%20terisolir.%20Mohon%20bantuan%20aktivasi.%20ID%20Pelanggan:%20_____";
 
   const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    toast({
-      description: "Nomor rekening berhasil disalin",
-      duration: 2000,
-    });
-    setTimeout(() => setCopiedId(null), 2000);
+    // Fallback method untuk HTTP context
+    const fallbackCopy = (text: string) => {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        textArea.remove();
+        return true;
+      } catch (err) {
+        console.error('Fallback copy failed:', err);
+        textArea.remove();
+        return false;
+      }
+    };
+
+    // Cobagunakan Clipboard API dulu, fallback ke method lama
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          setCopiedId(id);
+          toast({
+            description: "Nomor rekening berhasil disalin",
+            duration: 2000,
+          });
+          setTimeout(() => setCopiedId(null), 2000);
+        })
+        .catch(() => {
+          // Jika Clipboard API gagal, gunakan fallback
+          if (fallbackCopy(text)) {
+            setCopiedId(id);
+            toast({
+              description: "Nomor rekening berhasil disalin",
+              duration: 2000,
+            });
+            setTimeout(() => setCopiedId(null), 2000);
+          } else {
+            toast({
+              description: "Gagal menyalin. Silakan salin manual.",
+              duration: 2000,
+              variant: "destructive",
+            });
+          }
+        });
+    } else {
+      // Langsung gunakan fallback jika Clipboard API tidak tersedia
+      if (fallbackCopy(text)) {
+        setCopiedId(id);
+        toast({
+          description: "Nomor rekening berhasil disalin",
+          duration: 2000,
+        });
+        setTimeout(() => setCopiedId(null), 2000);
+      } else {
+        toast({
+          description: "Gagal menyalin. Silakan salin manual.",
+          duration: 2000,
+          variant: "destructive",
+        });
+      }
+    }
   };
 
   const downloadQRIS = () => {
