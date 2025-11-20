@@ -104,9 +104,9 @@ const IsolatedServicePage = () => {
         {/* Logo */}
         <div className="flex justify-center mb-5 sm:mb-6 md:mb-8">
           <img 
-            src="/logo.svg" 
+            src="/logo-pusatnet.png" 
             alt="Logo PusatNet" 
-            className="h-10 sm:h-12 md:h-14"
+            className="h-12 sm:h-14 md:h-16 w-auto object-contain"
           />
         </div>
 
