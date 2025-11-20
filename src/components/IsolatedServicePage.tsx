@@ -1,13 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { MessageCircle, Copy, Check } from "lucide-react";
+import { MessageCircle, Copy, Check, Download } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import bankMandiri from "@/assets/bank-mandiri.png";
 import bankBRI from "@/assets/bank-bri.png";
 import bankBNI from "@/assets/bank-bni.png";
 import bankBCA from "@/assets/bank-bca.png";
+import qrisPusatnet from "@/assets/qr-pusatnet.jpg";
 
 const IsolatedServicePage = () => {
   const { toast } = useToast();
@@ -22,6 +23,19 @@ const IsolatedServicePage = () => {
       duration: 2000,
     });
     setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const downloadQRIS = () => {
+    const link = document.createElement('a');
+    link.href = qrisPusatnet;
+    link.download = 'QRIS-Pusatnet.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    toast({
+      description: "QRIS sedang diunduh",
+      duration: 2000,
+    });
   };
 
   return (
@@ -176,6 +190,40 @@ const IsolatedServicePage = () => {
                       ) : (
                         <><Copy className="w-3 h-3 mr-1" /> Salin Rek</>
                       )}
+                    </Button>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="qris" className="border-b border-border/50">
+              <AccordionTrigger className="text-left text-sm sm:text-base font-semibold hover:text-primary transition-colors py-3 sm:py-4">
+                Bagaimana cara membayar dengan QRIS?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-sm sm:text-base pb-3 sm:pb-4">
+                <div className="space-y-4">
+                  <p className="font-medium text-foreground">
+                    Selesaikan pembayaran Anda dengan 4 langkah mudah:
+                  </p>
+                  <ol className="list-decimal list-inside space-y-2">
+                    <li>Simpan gambar QRIS di HP Anda</li>
+                    <li>Buka aplikasi dompet digital Anda</li>
+                    <li>Pilih fitur Scan QR atau Upload QR</li>
+                    <li>Upload gambar QRIS ini, lalu ikuti instruksi untuk menyelesaikan pembayaran</li>
+                  </ol>
+                  <div className="flex flex-col items-center gap-4 mt-4">
+                    <img 
+                      src={qrisPusatnet} 
+                      alt="QRIS Pusatnet Payment" 
+                      className="w-full max-w-md rounded-lg border shadow-sm"
+                    />
+                    <Button 
+                      onClick={downloadQRIS}
+                      className="w-full max-w-md"
+                      variant="default"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download QRIS
                     </Button>
                   </div>
                 </div>
