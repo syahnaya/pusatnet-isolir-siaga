@@ -9,6 +9,7 @@ import bankBRI from "@/assets/bank-bri.png";
 import bankBNI from "@/assets/bank-bni.png";
 import bankBCA from "@/assets/bank-bca.png";
 import qrisPusatnet from "@/assets/qr-pusatnet.jpg";
+import bannerPromo from "@/assets/banner-promo.png";
 
 const IsolatedServicePage = () => {
   const { toast } = useToast();
@@ -314,6 +315,15 @@ const IsolatedServicePage = () => {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </div>
+
+        {/* Promo Banner */}
+        <div className="mb-5 sm:mb-6 rounded-lg overflow-hidden shadow-md">
+          <img 
+            src={bannerPromo} 
+            alt="Promo Paket Internet PusatNet - Gratis Biaya Pemasangan" 
+            className="w-full h-auto object-cover"
+          />
         </div>
 
         {/* Footer */}
